@@ -20,5 +20,7 @@
 	- 2 - Inspect element browser and go to NETWORK
 	- 3 - Refresh page app.zodiacs.me
 	- 4 - Search any POST request and copy request (JSON)
-		- Exemple: 
 		[![EXEMPLE](https://i.ibb.co/pP9G6CX/Whats-App-Image-2022-01-04-at-13-43-58.jpg "EXEMPLE")](https://i.ibb.co/pP9G6CX/Whats-App-Image-2022-01-04-at-13-43-58.jpg "EXEMPLE")
+	- 5 - Copy everything and paste in the file "config.txt"
+
+	Finished
