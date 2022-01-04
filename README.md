@@ -1,26 +1,33 @@
-### Features
+# Cheatduo
 
-- List all cars :tw-1f44d:
-- Automatic change the cars after finishing :tw-1f44d:
-- Report after finishing :tw-1f44d:
+<img src="https://www.cheatduo.io/assets/img/logos/logo/cheatduo-core.png"></img>
+This is a bot for the blockchain racing game zodiacs.me.
+Features:
 
-# CHEATDUO.IO
+<ul>
+<li>List all cars</li>
+ <li>Change car after finishing the race</li>
+ <li>Lets you know about the race results</li>
+ </ul>
+<hr>
+<i>before starting you should already have <a href="https://nodejs.org/en/">nodejs</a> installed</i>
 
-![](https://www.cheatduo.io/assets/img/logos/logo/cheatduo-core.png)
+For setting the bot up, please follow the instructions:<br>
 
-
-**Data**
-
-####How to start
-
-- Install dependences ( npm install or yarn install )
-( fs, axios, colors, cfonts )
-- Configure the "config.txt", file
-	- 1 - Enter to app.zodiacs.me
-	- 2 - Inspect element browser and go to NETWORK
-	- 3 - Refresh page app.zodiacs.me
-	- 4 - Search any POST request and copy request (JSON)
-		[![EXEMPLE](https://i.ibb.co/pP9G6CX/Whats-App-Image-2022-01-04-at-13-43-58.jpg "EXEMPLE")](https://i.ibb.co/pP9G6CX/Whats-App-Image-2022-01-04-at-13-43-58.jpg "EXEMPLE")
-	- 5 - Copy everything and paste in the file "config.txt"
-
-	Finished
+<ol>
+<li>
+Install the following dependencies:
+    <ul>
+    <li>fs</li>
+    <li>axios</li>
+    <li>colors</li>
+    <li>cfonts</li>
+    </ul>
+</li>
+<li>Configure the <b>config.txt</b> file:
+    <ol>
+    <li>Go to <a href="app.zodiacs.me">app.zodiacs.me</a></li><li>Press F12 and go to the <b>NETWORK</b> tab</li>
+    <li>Refresh the page ( F5 )</li><li>Search for any <b>POST</b> request and copy the request as <b>JSON</b> ( <a href="https://i.ibb.co/pP9G6CX/Whats-App-Image-2022-01-04-at-13-43-58.jpg">img</a> )</li><li>Paste it into <i>config.txt</i></li></ol>
+</li>
+<li>Run <i>zodiacs_bot.js</i></li>
+</ol>
