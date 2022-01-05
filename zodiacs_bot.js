@@ -102,7 +102,7 @@ async function getListCars() {
 
         if(cars.length){
             for(let itera of cars ){
-                carsIds.push({id: itera.objectId, totalRaces: itera.racingCount, zdcTotal: 0})
+                carsIds.push({id: itera.objectId, totalRaces: itera.racingCount || 0, zdcTotal: 0})
             }
             return { error: 0, message: `[ 🚗🚙 ] -> CARS LISTED !! - CARS: ${carsIds.length}`};
         }
@@ -122,6 +122,7 @@ async function start() {
         console.log(`${getQtdCars.message}`.green)
         for(const [key, cars] of Object.entries(carsIds)){
             var body = {userCarId: cars.id, ...bodyPayload}
+            await sleep(2000)
             // CORRIDA COM 1 CARRO
             while(cars.totalRaces <= 12){
                 // console.log(body)
@@ -140,7 +141,7 @@ async function start() {
                 if (retorno.error == 0) {
                     console.log(`[${cars.id}][ 🟡 ] - CHECKING RESULT . . . .`.yellow)
                     const retorno2 = await checkStepTwo(body)
-                    if(await isException(retorno.error) == true){
+                    if(await isException(retorno2.error) == true){
                         carsIds[key].totalRaces = 13
                         console.log(`[${cars.id}] - ${retorno.message}`.red)
                         continue;
