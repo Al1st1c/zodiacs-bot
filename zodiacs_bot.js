@@ -22,7 +22,7 @@ let getCarsRoute = 'https://8za04rmw3eb0.grandmoralis.com:2053/server/functions/
 
 
 // Don't change this line please...
-cf.say('CHEATDUO.IO', { font: 'block', gradient: ['black', 'white'] });
+cf.say('CHEATDUO.IO', { font: 'huge' });
 
 
 async function raceStepOne(body) {
