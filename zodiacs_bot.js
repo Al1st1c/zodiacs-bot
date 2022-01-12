@@ -1,6 +1,6 @@
 const axios = require('axios')
-// const colors = require('colors')
-// const cf = require('cfonts');
+const colors = require('colors')
+const cf = require('cfonts');
 const fs = require('fs')
 
 function sleep(ms) {
@@ -22,7 +22,7 @@ let getCarsRoute = 'https://prfnbjckmlbo.usemoralis.com:2053/server/functions/us
 
 
 // Don't change this line please...
-// cf.say('CHEATDUO.IO', { font: 'huge' });
+cf.say('CHEATDUO.IO', { font: 'huge' });
 
 
 async function raceStepOne(body) {
@@ -73,7 +73,7 @@ async function checkStepTwo(body2) {
         return getInfoCheckRace.data
     } catch (error) {
         if (error.response.data.error == 'Your car is on racing. Please wait.'){
-            console.log('⏰  -> Wait to finish the race.' )
+            console.log('⏰  -> Wait to finish the race.'.yellow )
             await sleep(9000)
             return checkStepTwo(body2)
         }
@@ -95,7 +95,7 @@ async function checkStepTwo(body2) {
 async function getListCars() {
     try {
         // Check Users
-        const check = await axios.post('https://prfnbjckmlbo.usemoralis.com:2053/server/functions/user_checkSession', bodyPayload)
+        const check = await axios.post('https://8za04rmw3eb0.grandmoralis.com:2053/server/functions/user_checkSession', bodyPayload)
         if(check.data.result.isOk !== true) return {error: 1, status: 0, message: '[ 🔴 ] -> Account is invalid!'}
         const list = await axios.post(getCarsRoute, bodyPayload)
         const cars = list.data.result.userCars
@@ -109,7 +109,7 @@ async function getListCars() {
         return { error: 1, message: '[ 🔴 ] -> NO EXISTS CARS'};
         
     } catch (error) {
-        // if(error.message == 'Request failed with status code 502') return getListCars();
+        if(error.message == 'Request failed with status code 502') return getListCars();
         return { error: 1, message: error.message}
     }
 }
@@ -118,9 +118,8 @@ async function start() {
     try {
         // FOR DOS CARROS
         const getQtdCars = await getListCars()
-
-        if(getQtdCars.error == 1) return console.log(`${getQtdCars.message}`)
-        console.log(`${getQtdCars.message}`)
+        if(getQtdCars.error == 1) return console.log(`${getQtdCars.message}`.red)
+        console.log(`${getQtdCars.message}`.green)
         for(const [key, cars] of Object.entries(carsIds)){
             var body = {userCarId: cars.id, ...bodyPayload}
             await sleep(2000)
@@ -130,33 +129,33 @@ async function start() {
                 const retorno = await raceStepOne(body)
                 if(await isException(retorno.error) == true){
                     carsIds[key].totalRaces = 13
-                    console.log(`[${cars.id}] - ${retorno.message}`)
+                    console.log(`[${cars.id}] - ${retorno.message}`.red)
                     continue;
                 }
 
                 if(retorno.racesOk){
                     carsIds[key].totalRaces = retorno.racesOk
                 }
-                console.log(`[${cars.id}]${retorno.message}  -> 🚖 RACES : ${carsIds[key].totalRaces}`)
+                console.log(`[${cars.id}]${retorno.message}  -> 🚖 RACES : ${carsIds[key].totalRaces}`.magenta)
                 
                 if (retorno.error == 0) {
-                    console.log(`[${cars.id}][ 🟡 ] - CHECKING RESULT . . . .`)
+                    console.log(`[${cars.id}][ 🟡 ] - CHECKING RESULT . . . .`.yellow)
                     const retorno2 = await checkStepTwo(body)
                     if(await isException(retorno2.error) == true){
                         carsIds[key].totalRaces = 13
-                        console.log(`[${cars.id}] - ${retorno.message}`)
+                        console.log(`[${cars.id}] - ${retorno.message}`.red)
                         continue;
                     }
             
                     sumZDC += retorno2.result.result.rewardTokens
                     carsIds[key].zdcTotal +=  retorno2.result.result.rewardTokens
-                    console.log(`[ 🟢 ] ZDC WON :  ${retorno2.result.result.rewardTokens} -> 💲 TOTAL: ${sumZDC}\n`)
+                    console.log(`[ 🟢 ] ZDC WON :  ${retorno2.result.result.rewardTokens} -> 💲 TOTAL: ${sumZDC}\n`.green)
                 }
 
             }
 
         }
-        console.log(`[ 🟩 ] - TOTAL CARS: \n${carsIds.map(x=> `[${x.id}] - ZDC: ${x.zdcTotal}\n`)}`)
+        console.log(`[ 🟩 ] - TOTAL CARS: \n${carsIds.map(x=> `[${x.id}] - ZDC: ${x.zdcTotal}\n`)}`.green)
 
     } catch (error) {
         console.log(error)
