@@ -2,7 +2,7 @@
 
 <img src="https://www.cheatduo.io/assets/img/logos/logo/cheatduo-core.png"></img>
 
-<h3>! IMPORTANT: This is for educational purposes, anything you choose to use this for is YOUR responsibility. !</h3>
+<h3>! IMPORTANT: This is for educational purposes, anything you choose to use this for is YOUR responsibility !</h3>
 
 This is a bot for the blockchain racing game zodiacs.me.
 Features:
