@@ -95,7 +95,7 @@ async function checkStepTwo(body2) {
 async function getListCars() {
     try {
         // Check Users
-        const check = await axios.post('https://8za04rmw3eb0.grandmoralis.com:2053/server/functions/user_checkSession', bodyPayload)
+        const check = await axios.post('https://prfnbjckmlbo.usemoralis.com:2053/server/functions/user_checkSession', bodyPayload)
         if(check.data.result.isOk !== true) return {error: 1, status: 0, message: '[ 🔴 ] -> Account is invalid!'}
         const list = await axios.post(getCarsRoute, bodyPayload)
         const cars = list.data.result.userCars
